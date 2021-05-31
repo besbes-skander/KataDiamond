@@ -9,6 +9,13 @@ export class DiamondService {
   }
 
   displayDiamond(letter: string): string {
-    return 'A';
+    if(letter === 'A')
+    {
+      return 'A';
+    } else if (letter === 'B'){
+      return ' A \nB B'
+    } else {
+      return letter;
+    }
   }
 }

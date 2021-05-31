@@ -1,6 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { DiamondService } from './diamond.service';
+import {DiamondService} from './diamond.service';
 
 describe('DiamondService', () => {
   let service: DiamondService;
@@ -15,6 +15,14 @@ describe('DiamondService', () => {
   });
 
   it('should return A', () => {
-    expect(service.displayDiamond('A')).toEqual('A');
+    const letter = 'A';
+
+    expect(service.displayDiamond(letter)).toEqual('A');
+  });
+
+  it('should return B', () => {
+    const letter = 'B';
+
+    expect(service.displayDiamond(letter)).toEqual(' A \nB B');
   });
 });
