@@ -13,7 +13,7 @@ export class DiamondService {
     {
       return 'A';
     } else if (letter === 'B'){
-      return ' A \nB B'
+      return ' A \nB B\n A '
     } else {
       return letter;
     }

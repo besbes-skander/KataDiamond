@@ -20,9 +20,9 @@ describe('DiamondService', () => {
     expect(service.displayDiamond(letter)).toEqual('A');
   });
 
-  it('should return B', () => {
+  it('should return " A \nB B\n A " when given B', () => {
     const letter = 'B';
 
-    expect(service.displayDiamond(letter)).toEqual(' A \nB B');
+    expect(service.displayDiamond(letter)).toEqual(' A \nB B\n A ');
   });
 });
