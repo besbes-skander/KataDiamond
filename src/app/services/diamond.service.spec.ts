@@ -25,4 +25,10 @@ describe('DiamondService', () => {
 
     expect(service.displayDiamond(letter)).toEqual(' A \nB B\n A ');
   });
+
+  it('should return correct diamond for C', () => {
+    const letter = 'C';
+
+    expect(service.displayDiamond(letter)).toEqual('  A  \n B B \nC   C\n B B \n  A  ');
+  });
 });
