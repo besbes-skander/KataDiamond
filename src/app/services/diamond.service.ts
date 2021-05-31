@@ -9,8 +9,8 @@ export class DiamondService {
   }
 
   displayDiamond(letter: string): string {
-  const size = letter.charCodeAt(0) - 'A'.charCodeAt(0) + 1;
-
+    const size = letter.charCodeAt(0) - 'A'.charCodeAt(0) + 1;
+    const width = (size - 1) * 2 + 1;
     if (letter === 'A') {
       return this.addSpaces(0) + 'A' + this.addSpaces(0);
     } else if (letter === 'B') {
@@ -19,16 +19,45 @@ export class DiamondService {
         + this.addSpaces(1) + 'A' + this.addSpaces(1)
     } else if (letter === 'C') {
       let result = '';
-      let depth = ('A'.charCodeAt(0) - 'A'.charCodeAt(0));
-      result +=  this.addSpaces(size - depth - 1) + 'A' + this.addSpaces(size - depth - 1) + '\n';
-      depth = ('B'.charCodeAt(0) - 'A'.charCodeAt(0));
-      result +=  this.addSpaces(size - depth - 1) + 'B B' + this.addSpaces(size - depth - 1) + '\n';
-      depth = ('C'.charCodeAt(0) - 'A'.charCodeAt(0));
-      result +=  this.addSpaces(size - depth - 1) + 'C   C' + this.addSpaces(size - depth - 1) + '\n';
-      depth = ('B'.charCodeAt(0) - 'A'.charCodeAt(0));
-      result +=  this.addSpaces(size - depth - 1) + 'B B' + this.addSpaces(size - depth - 1) + '\n';
-      depth = ('A'.charCodeAt(0) - 'A'.charCodeAt(0));
-      result +=  this.addSpaces(size - depth - 1) + 'A' + this.addSpaces(size - depth - 1);
+      let depth = this.getDepth('A');
+      result += this.addSpaces(size - depth - 1) + 'A' + this.addSpaces(size - depth - 1) + '\n';
+
+      depth = this.getDepth('B');
+      result += this.addSpaces(size - depth - 1) + 'B' + this.addSpaces(width - 4) + 'B' + this.addSpaces(size - depth - 1) + '\n';
+
+      depth = this.getDepth('C');
+      result += this.addSpaces(size - depth - 1) + 'C' + this.addSpaces(width - 2) + 'C' + this.addSpaces(size - depth - 1) + '\n';
+
+      depth = this.getDepth('B');
+      result += this.addSpaces(size - depth - 1) + 'B' + this.addSpaces(width - 4) + 'B' + this.addSpaces(size - depth - 1) + '\n';
+
+      depth = this.getDepth('A');
+      result += this.addSpaces(size - depth - 1) + 'A' + this.addSpaces(size - depth - 1);
+
+      return result;
+    } else if (letter === 'D') {
+      let result = '';
+      let depth = this.getDepth('A');
+      result += this.addSpaces(size - depth - 1) + 'A' + this.addSpaces(size - depth - 1) + '\n';
+
+      depth = this.getDepth('B');
+      result += this.addSpaces(size - depth - 1) + 'B' + this.addSpaces(width - 6) + 'B' + this.addSpaces(size - depth - 1) + '\n';
+
+      depth = this.getDepth('C');
+      result += this.addSpaces(size - depth - 1) + 'C' + this.addSpaces(width - 4) + 'C' + this.addSpaces(size - depth - 1) + '\n';
+
+      depth = this.getDepth('D');
+      result += this.addSpaces(size - depth - 1) + 'D' + this.addSpaces(width -2) + 'D' + this.addSpaces(size - depth - 1) + '\n';
+
+      depth = this.getDepth('C');
+      result += this.addSpaces(size - depth - 1) + 'C' + this.addSpaces(width - 4) + 'C' + this.addSpaces(size - depth - 1) + '\n';
+
+      depth = this.getDepth('B');
+      result += this.addSpaces(size - depth - 1) + 'B' + this.addSpaces(width - 6) + 'B' + this.addSpaces(size - depth - 1) + '\n';
+
+      depth = this.getDepth('A');
+      result += this.addSpaces(size - depth - 1) + 'A' + this.addSpaces(size - depth - 1);
+
       return result;
     } else {
       return letter;
@@ -41,5 +70,9 @@ export class DiamondService {
       spaces += ' ';
     }
     return spaces;
+  }
+
+  getDepth(letter: string): number {
+    return letter.charCodeAt(0) - 'A'.charCodeAt(0);
   }
 }
